@@ -2,12 +2,14 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
+import cors from 'cors';
 
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
