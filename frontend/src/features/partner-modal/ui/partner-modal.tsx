@@ -1,11 +1,11 @@
 import { useState } from "react";
 import * as yup from "yup";
-// import emailjs from '@emailjs/browser';
 
 import { Select, SelectItem, Button, Image, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 
 import { formatPhoneNumber } from "../../../shared/lib/phone-formatter";
 import { XSquare } from "@phosphor-icons/react";
+import { PartnerSendMail } from "../api";
 
 type PartnerModalProps = {
   isModalOpen: boolean;
@@ -41,7 +41,7 @@ export function PartnerModal({ isModalOpen, toggleModalHandle }: PartnerModalPro
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isErrorSending, setIsErrorSending] = useState<boolean>(false);
 
-  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>, errorSetter: React.Dispatch<React.SetStateAction<string>>) => 
+  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>, errorSetter: React.Dispatch<React.SetStateAction<string>>) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       setter(event.target.value);
       errorSetter("");
@@ -62,25 +62,21 @@ export function PartnerModal({ isModalOpen, toggleModalHandle }: PartnerModalPro
       setActivityErrorMessage("");
       setIsSending(true);
       setIsErrorSending(false);
-
-      // await emailjs.send("service_8z0mby2", "template_72os6jx", {
-      //   partner: partner,
-      //   phonePartner: phonePartner,
-      //   activityPartner: activityPartner
-      // }).then((response) => {
-      //   if (response.status === 200) {
-      //     setIsSending(false);
-      //     setPartner("");
-      //     setPhonePartner("");
-      //     setActivityPartner("");
-      //     toggleModalHandle();
-      //   }
-      // }).catch((err) => {
-      //   if (err) {
-      //     setIsErrorSending(true);
-      //     setIsSending(false);
-      //   }
-      // });
+      await PartnerSendMail({ partner, phonePartner, activityPartner })
+        .then((response) => {
+          if (response.status === 200) {
+            setIsSending(false);
+            setPartner("");
+            setPhonePartner("");
+            setActivityPartner("");
+            toggleModalHandle();
+          }
+        }).catch((err) => {
+          if (err) {
+            setIsErrorSending(true);
+            setIsSending(false);
+          }
+        })
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         error.inner.forEach((err) => {
@@ -106,10 +102,6 @@ export function PartnerModal({ isModalOpen, toggleModalHandle }: PartnerModalPro
     setIsSending(false);
     setIsErrorSending(false);
   };
-
-  // useEffect(() => {
-  //   emailjs.init("jZlAR8Jn3Gx_DcXYI");
-  // }, []);
 
   return (
     <Modal
