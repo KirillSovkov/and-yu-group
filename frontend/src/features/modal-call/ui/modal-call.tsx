@@ -2,8 +2,9 @@ import { useState } from "react";
 import * as yup from "yup";
 import { Button, Image, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 import { XSquare } from "@phosphor-icons/react";
-// import emailjs from '@emailjs/browser';
+
 import { formatPhoneNumber } from "../../../shared/lib/phone-formatter";
+import { ClientSendMail } from "../api";
 
 type ModalCallMeProps = {
   isOpen: boolean;
@@ -48,21 +49,20 @@ export function ModalCallMe({ isOpen, onClose }: ModalCallMeProps) {
       setPhoneErrorMessage("");
       setIsSending(true);
       setIsErrorSending(false);
-      // await emailjs.send("service_8z0mby2", "emplate_5rlbmy9", 
-      //   { client: client, phoneClient: phoneClient }
-      // ).then((response) => {
-      //   if(response.status === 200) {
-      //     setIsSending(false);
-      //     setClient("");
-      //     setPhoneClient("");
-      //     onClose();
-      //   }
-      // }).catch((err) => {
-      //   if(err) {
-      //     setIsErrorSending(true);
-      //     setIsSending(false);
-      //   }
-      // })
+      await ClientSendMail({ client: client, phoneClient: phoneClient })
+        .then((response) => {
+          if (response.status === 200) {
+            setIsSending(false);
+            setClient("");
+            setPhoneClient("");
+            onClose();
+          }
+        }).catch((err) => {
+          if (err) {
+            setIsErrorSending(true);
+            setIsSending(false);
+          }
+        })
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         error.inner.forEach((err) => {
@@ -75,10 +75,6 @@ export function ModalCallMe({ isOpen, onClose }: ModalCallMeProps) {
       }
     }
   }
-
-  // useEffect(() => {
-  //   emailjs.init("jZlAR8Jn3Gx_DcXYI")
-  // });
 
   const resetForm = () => {
     setClient("");
@@ -142,11 +138,11 @@ export function ModalCallMe({ isOpen, onClose }: ModalCallMeProps) {
                     onChange={handleClientChange}
                     errorMessage={errorMessage}
                   />
-                  <Button 
-                    type="submit" 
-                    radius="none" 
+                  <Button
+                    type="submit"
+                    radius="none"
                     color={isErrorSending ? "danger" : "primary"}
-                    size="md" 
+                    size="md"
                     className="w-full"
                     isLoading={isSending}
                   >
