@@ -1,15 +1,18 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
-import nodemailer from 'nodemailer';
-import cors from 'cors';
+const express = require('express');
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8001;
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,6 +25,11 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   }
+  
+});
+
+app.get('/', (req, res) => {
+  res.send({ message: "Hello" });
 });
 
 app.post('/send-email-client', async (req, res) => {
@@ -66,8 +74,13 @@ app.post('/send-email-partner', async (req, res) => {
     res.status(500).send("Ошибка при отправке письма");
     console.log("Ошибка при отправке письма:", error);
   }
-})
+});
 
-app.listen(PORT, () => {
-  console.log(`Server started on ${PORT} port`);
+const options = {
+  key: fs.readFileSync(path.join('/etc/letsencrypt/live/test-andyu.ru/privkey.pem')),
+  cert: fs.readFileSync(path.join('/etc/letsencrypt/live/test-andyu.ru/fullchain.pem'))
+};
+
+https.createServer(options, app).listen(PORT, () => {
+  console.log(`Server is running on https://test-andyu.ru:${PORT}`);
 });
