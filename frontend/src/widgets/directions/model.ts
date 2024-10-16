@@ -1,4 +1,4 @@
 export interface StageWorkItemsI {
-  name: string,
+  name: string | React.ReactNode,
   img: string,
 }
