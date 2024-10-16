@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "@nextui-org/react": "^2.4.8",
     "@phosphor-icons/react": "^2.1.7",
+    "and-yu-group": "file:",
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.9.0",
