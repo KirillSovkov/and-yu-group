@@ -34,7 +34,7 @@ const stageWorkItems: StageWorkItemsI[] = [
     img: "/images/stages-work-imgs/wall.jpg",
   },
   {
-    name: "Корпусная и мягкая мебель Бытовая техника",
+    name: <span className="block">Корпусная и мягкая мебель <span className="block">Бытовая техника</span></span>,
     img: "/images/stages-work-imgs/sofa.jpg",
   },
 ]
