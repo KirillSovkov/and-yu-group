@@ -15,7 +15,7 @@ export function CooperationSection() {
   return(
     <section id="cooperation" className="scroll-mt-24">
      <div className="flex flex-col items-center gap-4 md:flex-row">
-      <div className="w-full md:w-2/5 bg-[url('/images/space.jpg')] h-[200px] md:h-[485px] bg-cover bg-bottom"></div>
+      <div className="w-full md:w-2/5 bg-[url('/images/space.jpg')] h-[200px] md:h-[485px] bg-cover bg-[center_bottom_-20px]"></div>
       <div className="flex flex-col items-center justify-between gap-6 px-4 py-4 md:py-10 md:w-[550px] min-h-full">
         <h1 className="text-2xl font-medium text-center text-black underline lg:text-left md:text-4xl">
           Сотрудничество
