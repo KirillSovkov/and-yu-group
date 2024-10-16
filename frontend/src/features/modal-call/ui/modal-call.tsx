@@ -98,7 +98,7 @@ export function ModalCallMe({ isOpen, onClose }: ModalCallMeProps) {
       }}
       closeButton={
         <Button isIconOnly variant="light" onClick={onClose}>
-          <XSquare size={38} />
+          <XSquare color="white" size={38} />
         </Button>
       }
     >
@@ -115,10 +115,10 @@ export function ModalCallMe({ isOpen, onClose }: ModalCallMeProps) {
               </div>
             </ModalHeader>
             <ModalBody>
-              <div className="flex flex-col items-center w-4/5 gap-3 m-auto text-center">
+              <div className="flex flex-col items-center w-4/5 gap-1 m-auto text-center">
                 <span className="text-2xl font-medium">Оставьте контакты</span>
                 <span className="text-sm font-normal">и мы свяжемся с Вами в ближайшее время</span>
-                <form className="flex flex-col w-full gap-5" onSubmit={handleSubmit}>
+                <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit}>
                   <Input
                     variant="underlined"
                     type="text"
@@ -151,7 +151,7 @@ export function ModalCallMe({ isOpen, onClose }: ModalCallMeProps) {
                 </form>
               </div>
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter className="pt-0">
               <p className="text-[8px] font-light text-center select-none">
                 НАЖИМАЯ КНОПКУ «Отправить», Я ДАЮ СВОЕ СОГЛАСИЕ НА ОБРАБОТКУ
                 МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ, В СООТВЕТСТВИИ С ФЕДЕРАЛЬНЫМ ЗАКОНОМ

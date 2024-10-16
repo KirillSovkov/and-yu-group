@@ -116,7 +116,7 @@ export function PartnerModal({ isModalOpen, toggleModalHandle }: PartnerModalPro
       }}
       closeButton={
         <Button isIconOnly variant="light" onClick={toggleModalHandle}>
-          <XSquare color="black" size={38} />
+          <XSquare color="white" size={38} />
         </Button>
       }
     >
@@ -133,8 +133,8 @@ export function PartnerModal({ isModalOpen, toggleModalHandle }: PartnerModalPro
               </div>
             </ModalHeader>
             <ModalBody>
-              <div className="flex flex-col items-center w-4/5 gap-3 m-auto text-center">
-                <form className="flex flex-col w-full gap-5" onSubmit={handleSubmit}>
+              <div className="flex flex-col items-center w-4/5 gap-1 m-auto text-center">
+                <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit}>
                   <Input
                     variant="underlined"
                     type="text"
@@ -183,7 +183,7 @@ export function PartnerModal({ isModalOpen, toggleModalHandle }: PartnerModalPro
                 </form>
               </div>
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter className="pt-0">
               <p className="text-[8px] font-light text-center select-none">
                 НАЖИМАЯ КНОПКУ «Отправить», Я ДАЮ СВОЕ СОГЛАСИЕ НА ОБРАБОТКУ
                 МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ, В СООТВЕТСТВИИ С ФЕДЕРАЛЬНЫМ ЗАКОНОМ
