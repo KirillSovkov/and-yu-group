@@ -54,7 +54,7 @@ export function FaqSection() {
   return (
     <section>
       <div className="flex flex-col items-center justify-center py-10 px-11 gap-9 bg-foreground-100">
-        <h1 className="text-2xl font-medium text-center text-black underline lg:text-left md:text-4xl">
+        <h1 className="text-center relative text-2xl font-medium text-black md:text-4xl before:content-['_'] before:absolute before:-bottom-2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:w-1/2 before:h-[1px] before:bg-black">
           Ответы на часто задаваемые вопросы
         </h1>
         <div className="lg:w-4/6 md:w-full">

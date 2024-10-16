@@ -41,7 +41,7 @@ export function StageWorkSection() {
   return (
     <section id="stagesWork" className="scroll-mt-24">
       <div className="flex flex-col items-center justify-center py-10 bg-foreground-100 px-11 gap-9">
-        <h1 className="text-2xl font-medium text-black underline md:text-4xl">
+        <h1 className="relative text-2xl font-medium text-black md:text-4xl before:content-['_'] before:absolute before:-bottom-2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:w-1/2 before:h-[1px] before:bg-black">
           Этапы работы
         </h1>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:w-4/6 md:w-full">

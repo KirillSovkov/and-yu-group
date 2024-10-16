@@ -4,7 +4,7 @@ export function AboutSection() {
   return (
     <section id="aboutUs" className="scroll-mt-24">
       <div className="flex flex-col items-center justify-center px-4 py-10 md:px-11 bg-foreground-100 gap-9">
-        <h1 className="text-2xl font-medium text-black underline md:text-4xl">
+        <h1 className="relative text-2xl font-medium text-black md:text-4xl before:content-['_'] before:absolute before:-bottom-2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:w-1/2 before:h-[1px] before:bg-black">
           О нас
         </h1>
         <div className="flex flex-col w-full gap-6 lg:w-4/6 md:w-full">

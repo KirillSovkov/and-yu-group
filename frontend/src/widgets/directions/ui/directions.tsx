@@ -44,9 +44,9 @@ export function DirectionsSection() {
   const { openModal } = useModalStore();
 
   return (
-    <section id="directions" className="scroll-mt-24">
+    <section id="directions" className="scroll-mt-24 bg-white">
       <div className="flex flex-col items-center justify-center px-4 py-10 md:px-11 gap-9">
-        <h1 className="text-2xl font-medium text-black underline md:text-4xl">
+        <h1 className="relative text-2xl font-medium text-black md:text-4xl before:content-['_'] before:absolute before:-bottom-2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:w-1/2 before:h-[1px] before:bg-black">
           Наши направления
         </h1>
         <div className="grid grid-cols-1 gap-2 grid-rows-8 md:grid-rows-4 md:grid-cols-2 lg:w-4/6 md:w-full">

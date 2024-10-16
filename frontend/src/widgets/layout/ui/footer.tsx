@@ -15,7 +15,7 @@ export function Footer() {
       <span>г. Новосибирск</span>
       <Link href="tel:89529436987" className="text-base text-white">+7 952 943 69 87</Link>
       <Link href="mailto:hello@andyu.ru" className="text-base text-white">hello@andyu.ru </Link>
-      <Link href="mailto:hello@andyu.ru" className="text-base text-white">Whatsapp</Link>
+      <Link href="https://api.whatsapp.com/send/?phone=79529346987&text&type=phone_number&app_absent=0" className="text-base text-white">Whatsapp</Link>
     </div>
     <div className="flex flex-col col-span-2 text-white md:col-span-1">
       <span>Реквизиты</span>
