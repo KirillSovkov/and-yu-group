@@ -34,10 +34,10 @@ export function Header() {
     <Navbar 
       onMenuOpenChange={setIsMenuOpen} 
       isMenuOpen={isMenuOpen} 
-      className="py-4" 
       isBordered={true} 
       isBlurred={false} 
       maxWidth="2xl"
+      height={"96px"}
     >
       <NavbarContent>
         <NavbarBrand>
@@ -76,7 +76,7 @@ export function Header() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
-      <NavbarMenu className="items-end pb-20 mt-8">
+      <NavbarMenu className="items-end pb-20 mt-0">
         {navigationLinks.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link

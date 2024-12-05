@@ -1,4 +1,4 @@
-import { Card } from "@nextui-org/react";
+import { Button, Card } from "@nextui-org/react";
 
 const advantages = [
   {
@@ -52,9 +52,9 @@ export function AdvantagesSection() {
 
   
   return (
-    <section id="advantages" className="scroll-mt-24">
+    <section id="advantages" className="scroll-mt-24 bg-white">
       <div className="flex flex-col items-center justify-center px-4 py-10 text-center md:px-11 gap-9">
-        <h1 className="text-2xl font-medium text-black underline md:text-4xl">
+        <h1 className="relative w-[320px] md:w-full text-2xl font-medium text-black md:text-4xl before:content-['_'] before:absolute before:-bottom-2 before:left-1/2 before:-translate-y-1/2 before:-translate-x-1/2 before:w-1/2 before:h-[1px] before:bg-black">
           Наши преимущества для вас
         </h1>
         <div className="grid grid-cols-1 gap-6 grid-rows-9 sm:grid-rows-4 sm:grid-cols-2 md:grid-rows-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 lg:w-4/6 md:w-full">
@@ -64,8 +64,11 @@ export function AdvantagesSection() {
                 <img src={advantage.image} alt="image" className="object-cover" />
               ) : (
                 <div className="flex flex-col items-center justify-center w-full h-full text-center">
-                  <p className="absolute p-3 text-lg transition-opacity duration-300 ease-in-out select-none group-hover:opacity-0">{advantage.title}</p>
-                  <span className="absolute p-3 text-base transition-opacity duration-300 ease-in-out opacity-0 select-none lg:text-xs group-hover:opacity-100">{advantage.description}</span>
+                  <div className="absolute p-3 text-lg transition-opacity duration-300 ease-in-out select-none group-hover:opacity-0">
+                    <span className="block text-xl">{advantage.title}</span>
+                    <span className="md:hidden text-green-900 text-base underline decoration-dashed">Подробнее</span>  
+                  </div>
+                  <span className="absolute p-3 text-lg transition-opacity duration-300 ease-in-out opacity-0 select-none lg:text-base group-hover:opacity-100">{advantage.description}</span>
                 </div>
               )}
             </Card>
