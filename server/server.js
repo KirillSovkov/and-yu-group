@@ -1,11 +1,11 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const express = require("express");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
 
 dotenv.config();
 
@@ -24,15 +24,14 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
-  }
-  
+  },
 });
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send({ message: "Hello" });
 });
 
-app.post('/send-email-client', async (req, res) => {
+app.post("/send-email-client", async (req, res) => {
   const { client, phoneClient } = req.body;
   const mailOptions = {
     from: "hello@andyu.ru",
@@ -54,7 +53,7 @@ app.post('/send-email-client', async (req, res) => {
   }
 });
 
-app.post('/send-email-partner', async (req, res) => {
+app.post("/send-email-partner", async (req, res) => {
   const { partner, phonePartner, activityPartner } = req.body;
   const mailOptions = {
     from: "hello@andyu.ru",
@@ -77,10 +76,14 @@ app.post('/send-email-partner', async (req, res) => {
 });
 
 const options = {
-  key: fs.readFileSync(path.join('/etc/letsencrypt/live/test-andyu.ru/privkey.pem')),
-  cert: fs.readFileSync(path.join('/etc/letsencrypt/live/test-andyu.ru/fullchain.pem'))
+  key: fs.readFileSync(
+    path.join("/etc/letsencrypt/live/api.andyu.ru/privkey.pem"),
+  ),
+  cert: fs.readFileSync(
+    path.join("/etc/letsencrypt/live/api.andyu.ru/fullchain.pem"),
+  ),
 };
 
 https.createServer(options, app).listen(PORT, () => {
-  console.log(`Server is running on https://test-andyu.ru:${PORT}`);
+  console.log(`Server is running on https://api.andyu.ru:${PORT}`);
 });
